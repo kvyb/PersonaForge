@@ -14,6 +14,7 @@ logger = logging.getLogger(__name__)
 
 tokenizer = AutoTokenizer.from_pretrained("PygmalionAI/pygmalion-1.3b")
 model = AutoModelForCausalLM.from_pretrained("PygmalionAI/pygmalion-1.3b")
+model.use_multiprocessing = False
 
 def build_model_and_tokenizer_for(
     model_name: str
