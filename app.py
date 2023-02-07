@@ -69,8 +69,8 @@ def main(model_name: t.Optional[str]):
         logger.debug("Parsed model response is: `%s`", generated_messages)
         bot_message = generated_messages[0]
         return bot_message
-    ui = build_gradio_ui_for(inference_fn, server_name="0.0.0.0")
-    ui.queue(concurrency_count=2).launch(auth=[("admin","password"),("user","password")])
+    ui = build_gradio_ui_for(inference_fn)
+    ui.queue(concurrency_count=2).launch(auth=[("admin","password"),("user","password")], server_name="0.0.0.0")
 
 
 if __name__ == "__main__":
