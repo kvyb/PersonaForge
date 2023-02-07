@@ -12,8 +12,8 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 
 logger = logging.getLogger(__name__)
 
-tokenizer = AutoTokenizer.from_pretrained("PygmalionAI/pygmalion-6b")
-model = AutoModelForCausalLM.from_pretrained("PygmalionAI/pygmalion-6b")
+# tokenizer = AutoTokenizer.from_pretrained("PygmalionAI/pygmalion-6b")
+# model = AutoModelForCausalLM.from_pretrained("PygmalionAI/pygmalion-6b")
 # model.use_multiprocessing = False
 
 def build_model_and_tokenizer_for(
