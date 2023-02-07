@@ -1,0 +1,5 @@
+gradio
+requests
+accelerate
+safetensors
+transformers
