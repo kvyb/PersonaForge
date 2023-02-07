@@ -74,4 +74,4 @@ def main(model_name: t.Optional[str]):
 
 
 if __name__ == "__main__":
-    main(model_name='PygmalionAI/pygmalion-6b')
+    main(model_name='PygmalionAI/pygmalion-2.7b')
