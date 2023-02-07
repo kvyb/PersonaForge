@@ -70,8 +70,10 @@ def main(model_name: t.Optional[str]):
         bot_message = generated_messages[0]
         return bot_message
     ui = build_gradio_ui_for(inference_fn)
+    # Auth does not work on http?? TODO: open an issue on github regardign auth on VM's exposed to internet
     # ui.queue(concurrency_count=2).launch(auth=[("admin","password"),("user","password")], server_name="10.186.0.4")
+    # Set server_name to 0.0.0.0 or server internal IP
     ui.queue(concurrency_count=2).launch(server_name="10.186.0.4")
 
 if __name__ == "__main__":
-    main(model_name='PygmalionAI/pygmalion-2.7b')
+    main(model_name='PygmalionAI/pygmalion-6b')
