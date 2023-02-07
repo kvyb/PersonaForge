@@ -76,7 +76,8 @@ def run_raw_inference(model: transformers.AutoModelForCausalLM,
     logger.debug("Before trimming, model output was: `%s`", output)
 
     # Trim out the input prompt from the generated output.
-    if (idx := prompt.rfind(user_message)) != -1:
+    idx = prompt.rfind(user_message)
+    if idx != -1:
         trimmed_output = output[idx + len(user_message) - 1:].strip()
         logger.debug("After trimming, it became: `%s`", trimmed_output)
 
