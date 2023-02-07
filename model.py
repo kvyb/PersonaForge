@@ -81,8 +81,12 @@ def run_raw_inference(model: transformers.AutoModelForCausalLM,
     if idx != -1:
         trimmed_output = output[idx + len(user_message) - 1:].strip()
         logger.debug("After trimming, it became: `%s`", trimmed_output)
-
+        # Fix for out of memory?
+        del tokenized_items
+        torch.cuda.empty_cache()
         return trimmed_output
+    
+
     else:
         raise Exception(
             "Couldn't find user message in the model's output. What?")
