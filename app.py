@@ -70,7 +70,7 @@ def main(model_name: t.Optional[str]):
         bot_message = generated_messages[0]
         return bot_message
     ui = build_gradio_ui_for(inference_fn)
-    ui.queue(concurrency_count=2).launch(auth=[("admin","password"),("user","password")], server_name="0.0.0.0")
+    ui.queue(concurrency_count=2).launch(auth=[("admin","password"),("user","password")], server_name="34.118.21.233")
 
 
 if __name__ == "__main__":
