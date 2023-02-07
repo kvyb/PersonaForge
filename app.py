@@ -70,8 +70,8 @@ def main(model_name: t.Optional[str]):
         bot_message = generated_messages[0]
         return bot_message
     ui = build_gradio_ui_for(inference_fn)
-    ui.queue(concurrency_count=2).launch(auth=[("admin","password"),("user","password")], server_name="10.186.0.4")
-
+    # ui.queue(concurrency_count=2).launch(auth=[("admin","password"),("user","password")], server_name="10.186.0.4")
+    ui.queue(concurrency_count=2).launch(server_name="10.186.0.4")
 
 if __name__ == "__main__":
     main(model_name='PygmalionAI/pygmalion-2.7b')
