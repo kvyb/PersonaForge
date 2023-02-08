@@ -4,7 +4,7 @@ import torch
 import transformers
 import logging
 import typing as t
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoModelForSeq2SeqLM
 # Not enough RAM on mac to run these:
 # PygmalionAI/pygmalion-2.7b
 # PygmalionAI/pygmalion-6b
@@ -21,7 +21,7 @@ def build_model_and_tokenizer_for(
 ) -> t.Tuple[transformers.AutoModelForCausalLM, transformers.AutoTokenizer]:
     '''Sets up the model and accompanying objects.'''
     logger.info(f"Loading tokenizer for {model_name}")
-    tokenizer = transformers.AutoTokenizer.from_pretrained(model_name)
+    tokenizer = AutoModelForSeq2SeqLM.from_pretrained(model_name, device_map="auto")
 
     # NOTE(11b): non-OPT models support passing this in at inference time, might
     # be worth refactoring for a debug version so we're able to experiment on
