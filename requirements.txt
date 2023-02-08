@@ -3,3 +3,5 @@ requests
 accelerate
 safetensors
 transformers
+bitsandbytes>=0.31.5
+accelerate>=0.12.0

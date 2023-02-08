@@ -4,7 +4,6 @@ import torch
 import transformers
 import logging
 import typing as t
-from transformers import AutoModelForSeq2SeqLM
 # Not enough RAM on mac to run these:
 # PygmalionAI/pygmalion-2.7b
 # PygmalionAI/pygmalion-6b
@@ -33,7 +32,7 @@ def build_model_and_tokenizer_for(
 
     logger.info(f"Loading the {model_name} model")
     model = transformers.AutoModelForCausalLM.from_pretrained(
-        model_name, bad_words_ids=bad_words_ids)
+        model_name, bad_words_ids=bad_words_ids, device_map='auto', load_in_8bit=True)
     model.eval().half().to("cuda")
 
     logger.info("Model and tokenizer are ready")
