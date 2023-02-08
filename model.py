@@ -21,7 +21,7 @@ def build_model_and_tokenizer_for(
 ) -> t.Tuple[transformers.AutoModelForCausalLM, transformers.AutoTokenizer]:
     '''Sets up the model and accompanying objects.'''
     logger.info(f"Loading tokenizer for {model_name}")
-    tokenizer = AutoModelForSeq2SeqLM.from_pretrained(model_name, device_map="auto")
+    tokenizer = transformers.AutoTokenizer.from_pretrained(model_name, device_map="auto", max_shard_size="1G")
 
     # NOTE(11b): non-OPT models support passing this in at inference time, might
     # be worth refactoring for a debug version so we're able to experiment on
