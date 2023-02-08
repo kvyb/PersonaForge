@@ -33,7 +33,7 @@ def build_model_and_tokenizer_for(
 
     logger.info(f"Loading the {model_name} model")
     model = transformers.AutoModelForCausalLM.from_pretrained(
-        model_name, bad_words_ids=bad_words_ids)
+        model_name, device_map="auto", max_shard_size="1G", bad_words_ids=bad_words_ids)
     model.eval().half().to("cuda")
 
     logger.info("Model and tokenizer are ready")
