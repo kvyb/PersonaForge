@@ -83,7 +83,7 @@ def run_raw_inference(model: transformers.AutoModelForCausalLM,
         logger.debug("After trimming, it became: `%s`", trimmed_output)
         # Fix for out of memory?
         del tokenized_items
-        # torch.cuda.empty_cache()
+        torch.cuda.empty_cache()
         return trimmed_output
     
 
