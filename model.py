@@ -34,7 +34,7 @@ def build_model_and_tokenizer_for(
     model = transformers.AutoModelForCausalLM.from_pretrained(
         model_name, bad_words_ids=bad_words_ids, device_map='auto', load_in_8bit=True)
     # model.eval().half().to("cuda")
-    model.eval()
+    model.eval().to("cuda")
 
     logger.info("Model and tokenizer are ready")
     return model, tokenizer
@@ -54,7 +54,7 @@ def run_raw_inference(model: transformers.AutoModelForCausalLM,
         of `prompt`. Used for trimming the original input from the model output.
     :return: Decoded model generation.
     '''
-    tokenized_items = tokenizer(prompt, return_tensors="pt")
+    tokenized_items = tokenizer(prompt, return_tensors="pt").to("cuda")
 
     # Atrocious code to stop generation when the model outputs "\nYou: " in
     # freshly generated text. Feel free to send in a PR if you know of a
